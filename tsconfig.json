@@ -26,7 +26,7 @@
             "@/*": ["src/*"],
             "@build/*": ["build/*"]
         },
-
+        "types": ["node", "vite/client"],
         "typeRoots": [
             "./types",
             "node_modules/@types", // 默认值
@@ -38,7 +38,8 @@
         "src/**/*.tsx",
         "src/**/*.vue",
         "build/**/*.ts",
-        "types/*.d.ts"
+        "types/*.d.ts",
+        "vite-env.d.ts"
     ],
     "exclude": ["dist", "**/*.js", "node_modules"],
     "references": [{ "path": "./tsconfig.node.json" }]

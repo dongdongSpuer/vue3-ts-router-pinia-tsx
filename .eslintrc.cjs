@@ -40,6 +40,7 @@ module.exports = {
         // vite打包时自动去除console和debugger,所以这里直接关掉检查
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        // 'vue/multi-word-component-names': 0,
         'linebreak-style': 0,
         indent: 'off',
         // 'linebreak-style': [
@@ -47,4 +48,14 @@ module.exports = {
         //     process.platform === 'win32' ? 'windows' : 'unix',
         // ],
     },
+
+    // 覆盖这个文件下vue文件名需要驼峰命名的规则
+    overrides: [
+        {
+            files: ['src/views/**/*.vue'],
+            rules: {
+                'vue/multi-word-component-names': 0,
+            },
+        },
+    ],
 };
