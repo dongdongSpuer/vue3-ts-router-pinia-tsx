@@ -13,22 +13,28 @@ import removeConsole from 'vite-plugin-remove-console';
 
 // 压缩插件
 import { compress } from './compress';
+
+// jsx插件
+import vueJsx from '@vitejs/plugin-vue-jsx';
 export function getPlugin(mode: 'development' | 'production'): PluginOption[] {
     return [
         vue(),
         svgLoader(),
-        mode === 'production'
+        vueJsx(),
+        isProduction(mode)
             ? visualizer({
                   open: true,
                   brotliSize: true,
                   filename: 'report.html',
               })
             : null,
-        mode == 'production'
+        isProduction(mode)
             ? removeConsole({ external: ['src/assets/iconfont/iconfont.js'] })
             : null,
-        compress(),
+        isProduction(mode) ? compress() : null,
     ];
 }
 
-// import vueJsx from '@vitejs/plugin-vue-jsx';
+function isProduction(mode: string) {
+    return mode === 'production';
+}

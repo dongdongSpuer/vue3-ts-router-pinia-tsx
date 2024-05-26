@@ -8,6 +8,7 @@ export const compress = (): PluginOption => {
         disable: false,
         threshold: 10240,
         algorithm: 'gzip',
+        deleteOriginFile: false,
         ext: '.gz',
         filter: () => true,
     });
